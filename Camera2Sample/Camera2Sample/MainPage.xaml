@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Camera2Sample"
-             x:Class="Camera2Sample.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:renderers="clr-namespace:Camera2Sample.Renderers;assembly=Camera2Sample"
+			 x:Class="Camera2Sample.MainPage">
+	<StackLayout>
+		<Label Text="UNIT23 -  Xamarin Android Camera2 API" 
+		   HorizontalOptions="Center" />
+		<renderers:CameraView Camera="Front"
+		                      HeightRequest="400"
+		                      HorizontalOptions="FillAndExpand" />
+		<Image HeightRequest="400" x:Name="PhotoCaptured" />
+		
+	</StackLayout>
 
 </ContentPage>
