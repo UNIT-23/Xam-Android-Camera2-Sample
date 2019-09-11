@@ -8,6 +8,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Camera2Sample.Renderers;
 using Java.Lang;
 using System;
 using System.Collections.Generic;
@@ -80,7 +81,7 @@ namespace Camera2Sample.Droid.Renderers.Camera
 		{
 		}
 
-		public void OpenCamera()
+		public void OpenCamera(CameraOptions options)
 		{
 			if (_context == null || OpeningCamera)
 			{
@@ -91,7 +92,7 @@ namespace Camera2Sample.Droid.Renderers.Camera
 
 			_manager = (CameraManager)_context.GetSystemService(Context.CameraService);
 
-			var cameraId = _manager.GetCameraIdList()[1];
+			var cameraId = _manager.GetCameraIdList()[(int)options];
 
 			var characteristics = _manager.GetCameraCharacteristics(cameraId);
 			var map = (StreamConfigurationMap)characteristics.Get(CameraCharacteristics.ScalerStreamConfigurationMap);

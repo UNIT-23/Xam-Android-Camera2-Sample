@@ -33,12 +33,13 @@ namespace Camera2Sample.Droid.Renderers.Camera
 
 			var permissions = CameraPermissions();
 			_camera = new CameraDroid(Context);
-
-			if (Control == null)
+           
+            CameraOptions CameraOption = e.NewElement?.Camera??CameraOptions.Rear;
+            if (Control == null)
 			{
 				if (permissions)
 				{
-					_camera.OpenCamera();
+					_camera.OpenCamera(CameraOption);
 
 					SetNativeControl(_camera);
 				}
@@ -46,7 +47,7 @@ namespace Camera2Sample.Droid.Renderers.Camera
 				{
 					MainActivity.CameraPermissionGranted += (sender, args) =>
 					{
-						_camera.OpenCamera();
+						_camera.OpenCamera(CameraOption);
 
 						SetNativeControl(_camera);
 					};
